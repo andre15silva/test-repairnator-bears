@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +17,11 @@ public class GitHelperTest {
     public void setUp() throws IOException {
         tmpDir = Files.createTempDirectory("workspace").toFile();
         repoUrl = "https://github.com/fermadeiral/bears-usage.git";
+    }
+
+    @After
+    public void tearDown() throws IOException {
+        TestUtils.deleteFile(tmpDir);
     }
 
     @Test
