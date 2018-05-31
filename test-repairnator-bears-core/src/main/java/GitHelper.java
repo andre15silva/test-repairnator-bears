@@ -2,8 +2,13 @@ import java.io.*;
 
 public class GitHelper {
 
-    public static StringBuilder gitClone(String repoUrl, File gitDir) {
-        String[] gitClone = {"git", "clone", repoUrl};
+    public static StringBuilder gitClone(String repoUrl, File gitDir, boolean cloneSubmodules) {
+        String[] gitClone;
+        if (cloneSubmodules) {
+            gitClone = new String[]{"git", "clone", "--recurse-submodules", repoUrl};
+        } else {
+            gitClone = new String[]{"git", "clone", repoUrl};
+        }
         executeGitCommand(gitDir, gitClone);
         String newDirName = repoUrl.substring(repoUrl.lastIndexOf("/") + 1, repoUrl.lastIndexOf("."));
         StringBuilder output = new StringBuilder();

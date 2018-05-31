@@ -26,14 +26,14 @@ public class GitHelperTest {
     @Test
     public void testGitClone() {
         String repoUrl = "https://github.com/fermadeiral/bears-usage.git";
-        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir);
+        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir, false);
         assertEquals(tmpDir.toPath() + "/bears-usage", gitDirPath.toString());
     }
 
     @Test
     public void testGitCloneWithProjectContainingSubmodule() {
         String repoUrl = "https://github.com/Spirals-Team/repairnator.git";
-        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir);
+        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir, true);
         assertEquals(tmpDir.toPath() + "/repairnator", gitDirPath.toString());
 
         File gitDir = new File(gitDirPath.toString());
@@ -53,7 +53,7 @@ public class GitHelperTest {
     @Test
     public void testGitCheckoutCommit() {
         String repoUrl = "https://github.com/fermadeiral/bears-usage.git";
-        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir);
+        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir, false);
         File gitDir = new File(gitDirPath.toString());
 
         String commit = "64ac432f62f9b450ffb221fb8ff2caa8e81a6663";
@@ -68,7 +68,7 @@ public class GitHelperTest {
     @Test
     public void testGitDiffNameStatus() {
         String repoUrl = "https://github.com/fermadeiral/bears-usage.git";
-        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir);
+        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir, false);
 
         String commit1 = "6565b62263c1a8209933587aa68dff5307abf32e";
         String commit2 = "e90c26bbfbdbdc9039090f4cd5108fc17273bf5d";
@@ -81,7 +81,7 @@ public class GitHelperTest {
     @Test
     public void testGitDiffNumStat() {
         String repoUrl = "https://github.com/fermadeiral/bears-usage.git";
-        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir);
+        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir, false);
 
         String commit1 = "6565b62263c1a8209933587aa68dff5307abf32e";
         String commit2 = "e90c26bbfbdbdc9039090f4cd5108fc17273bf5d";

@@ -18,7 +18,7 @@ public class PatchStatsTest {
     public void setUp() throws IOException {
         tmpDir = Files.createTempDirectory("workspace").toFile();
         repoUrl = "https://github.com/fermadeiral/bears-usage.git";
-        gitDirPath = GitHelper.gitClone(repoUrl, tmpDir);
+        gitDirPath = GitHelper.gitClone(repoUrl, tmpDir, false);
     }
 
     @After
