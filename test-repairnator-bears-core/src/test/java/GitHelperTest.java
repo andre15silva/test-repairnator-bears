@@ -25,6 +25,20 @@ public class GitHelperTest {
     }
 
     @Test
+    public void testGitCheckoutCommit() {
+        StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir);
+        File gitDir = new File(gitDirPath.toString());
+
+        String commit = "64ac432f62f9b450ffb221fb8ff2caa8e81a6663";
+
+        GitHelper.gitCheckoutCommit(commit, gitDir);
+
+        StringBuilder gitRevParseHeadOutput = GitHelper.gitRevParseHead(gitDir);
+
+        assertEquals(commit, gitRevParseHeadOutput.toString());
+    }
+
+    @Test
     public void testGitDiffNameStatus() {
         StringBuilder gitDirPath = GitHelper.gitClone(repoUrl, tmpDir);
 

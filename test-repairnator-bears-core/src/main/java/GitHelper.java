@@ -11,6 +11,16 @@ public class GitHelper {
         return output;
     }
 
+    public static StringBuilder gitCheckoutCommit(String commit, File gitDir) {
+        String[] gitDiffStat = {"git", "checkout", commit};
+        return executeGitCommand(gitDir, gitDiffStat);
+    }
+
+    public static StringBuilder gitRevParseHead(File gitDir) {
+        String[] gitDiffStat = {"git", "rev-parse", "HEAD"};
+        return executeGitCommand(gitDir, gitDiffStat);
+    }
+
     public static StringBuilder gitDiffNameStatus(String commit1, String commit2, File gitDir) {
         String[] gitDiffStat = {"git", "diff", "--name-status", commit1, commit2};
         return executeGitCommand(gitDir, gitDiffStat);
